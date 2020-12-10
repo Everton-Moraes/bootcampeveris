@@ -10,6 +10,8 @@ ng serve // para inicializar o servidor
 
 npm istall bootstrap // para instalar o bootstrap
 
+npm install font-awesome // para instalar o font-awesome
+
 
 O angular é modular, ou seja, sempre terá um módulo
 Módulo engloba toda a aplicação - limitador de contexto
