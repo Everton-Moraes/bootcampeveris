@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>CoinMarketCap</title>
+</head>
+<body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Coin Market Cap</li>
+        </ol>
+    </nav>
+
+    <div id='coins'><</div>
+    <script type="text/javascript">
+        var apikey ={
+            key: 'ae11d7ac-41cf-4adb-b28e-e1c25c67e1d8'
+        }
+        fetch('http://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY='
+             + apikey.key).then((response) => {
+                if(!response.ok) throw new Error('Erro ao executar a requisição, status ' + response.status);
+                return response.json();
+        }).then((api) => {
+            var texto ="";
+            //Get 10 coins and symbols
+            for(let i=0; i < 10; i++) {
+               
+                //Exibe informações da API 
+                texto = texto + `
+                
+                    <div class="medi">
+                        <img src="coin.jpg" class="align-self-center mr-3 alt="coin" width="100" height="60">
+                        <div class="media-body">
+                            <h5 class="mt-2">${api.data[i].name}</h5>
+                            <p>${api.data[i].symbol} - ${api.data[i].first_historical_data}</p>
+                        </div>
+                    </div>    
+                    `;
+                document.getElementById("coins").innerHTML = texto;
+            }
+        
+        }).catch((error) => {
+            console.log(erro.message);
+        });
+    </script>
+</body>
+</html>

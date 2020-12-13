@@ -1,0 +1,36 @@
+Comandos Administrativos
+
+psql -h localhost - U postgres -W postgres //para acesso via cmd
+
+
+----------------Joins --------------------
+
+Join (inner) - junção das duas tabelas
+Retorna os dados que pertencem as duas tabelas
+
+SELECT tabela_1.campos, tabela_2.campos
+FROM tabela_1
+JOIN tabela_2
+  ON tabela_2.campo = tabela_1.campo
+
+left Join(outer) - Retorna as informações completa da tabela da esquerda e se tiver referência na tabela a direita ele trás senão tiver ele trás NULL.
+
+SELECT tabela_1.campos, tabela_2.campos
+FROM tabela_1
+LEFT JOIN tabela_2
+  ON tabela_2.campo = tabela_1.campo
+
+Right Join(outer) - Retorna as informações completa da tabela da direita e se tiver referência na tabela a esquerda ele trás senão tiver ele trás NULL.
+
+SELECT tabela_1.campos, tabela_2.campos
+FROM tabela_1
+RIGHT JOIN tabela_2
+  ON tabela_2.campo = tabela_1.campo
+
+Full Join - Trás todas as relações possiveis
+
+Cross Join - Todos os dados de uma tabela serão cruzados com todos os dados da tabela referenciada no CROSS JOIN criando uma matriz
+
+SELECT tabela_1.campos, tabela_2.campos
+FROM tabela_1
+CROSS JOIN tabela_2
